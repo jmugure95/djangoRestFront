@@ -17,20 +17,20 @@ export class MainComponent implements AfterViewInit {
     });
 
     const osmTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      minZoom: 3,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    });
-    osmTiles.addTo(this.map);
+        maxZoom: 18,
+        minZoom: 3,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      });
 
-  }
+    osmTiles.addTo(this.map);
+    }
 
   constructor(private incidenceService: IncidenceService) {
   }
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.incidenceService.getIncidences(this.map);
+    // this.incidenceService.getIncidences(this.map);
   }
 
 }
