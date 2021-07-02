@@ -10,6 +10,7 @@ import { MovieDetailsComponent } from './main/movie-details/movie-details.compon
 import { MovieFormComponent } from './main/movie-form/movie-form.component';
 import { MovieListComponent } from './main/movie-list/movie-list.component';
 import { ApiService } from './api.service';
+import { IncidenceService} from './incidence.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { ApiService } from './api.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, IncidenceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
