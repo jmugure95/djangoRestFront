@@ -11,6 +11,7 @@ import { MovieFormComponent } from './main/movie-form/movie-form.component';
 import { MovieListComponent } from './main/movie-list/movie-list.component';
 import { ApiService } from './api.service';
 import { IncidenceService} from './incidence.service';
+import {CountyShpService} from './county-shp.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,11 @@ import { IncidenceService} from './incidence.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ApiService, IncidenceService],
+  providers: [
+    ApiService,
+    IncidenceService,
+    CountyShpService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
