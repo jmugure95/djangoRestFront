@@ -7,8 +7,8 @@ import {MovieDetailsComponent} from './main/movie-details/movie-details.componen
 import {MovieFormComponent} from './main/movie-form/movie-form.component';
 
 const routes: Routes = [
+  {path: '', component: MainComponent},
   {path: 'auth', component: AuthComponent},
-  {path: 'main', component: MainComponent},
   {path: 'list', component: MovieListComponent}
 ];
 
