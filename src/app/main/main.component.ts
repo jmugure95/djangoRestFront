@@ -3,7 +3,7 @@ import * as L from 'leaflet';
 import { IncidenceService } from '../incidence.service';
 import {CountyShpService} from '../county-shp.service';
 
-
+// add marker shadow
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
@@ -31,7 +31,7 @@ export class MainComponent implements AfterViewInit {
   private initMap(): void {
     this.map = L.map('map', {
       center: [0.023, 36.87],
-      zoom: 4
+      zoom: 6
     });
 
     const osmTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -43,6 +43,31 @@ export class MainComponent implements AfterViewInit {
     osmTiles.addTo(this.map);
     }
 
+  // attach mouseover and mouseout events to interact with each of the shapes
+  // with onEachFeature:
+  private highlightFeature(e): any {
+    const layer = e.target;
+
+    layer.setStyle({
+      weight: 10,
+      opacity: 1.0,
+      color: '#DFA612',
+      fillOpacity: 1.0,
+      fillColor: '#FAE042'
+    });
+  }
+
+  private resetFeature(e): any {
+    const layer = e.target;
+
+    layer.setStyle({
+      weight: 3,
+      opacity: 0.5,
+      color: '#008f68',
+      fillOpacity: 0.8,
+      fillColor: '#6DB65B'
+    });
+  }
   private initCountyLayer(): any {
     const countyLayer = L.geoJSON(this.county, {
       style: (feature) => ({
@@ -51,7 +76,13 @@ export class MainComponent implements AfterViewInit {
         color: '#008f68',
         fillOpacity: 0.8,
         fillColor: '#6DB65B'
-      })
+      }),
+      onEachFeature: (feature, layer) => (
+        layer.on({
+          mouseover: (e) => (this.highlightFeature(e)),
+          mouseout: (e) => (this.resetFeature(e)),
+        })
+      )
     });
 
     this.map.addLayer(countyLayer);
