@@ -10,8 +10,10 @@ import { MovieDetailsComponent } from './main/movie-details/movie-details.compon
 import { MovieFormComponent } from './main/movie-form/movie-form.component';
 import { MovieListComponent } from './main/movie-list/movie-list.component';
 import { ApiService } from './api.service';
-import { IncidenceService} from './incidence.service';
-import {CountyShpService} from './county-shp.service';
+import { IncidenceService } from './incidence.service';
+import { CountyShpService } from './county-shp.service';
+import { PopupService } from './popup.service';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import {CountyShpService} from './county-shp.service';
   providers: [
     ApiService,
     IncidenceService,
-    CountyShpService
+    CountyShpService,
+    PopupService
   ],
   bootstrap: [AppComponent]
 })
