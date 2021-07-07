@@ -10,19 +10,19 @@ export class PopupService {
 
   constructor(private countyShpService: CountyShpService) {
 
-    this.countyShpService.addCountyShp().subscribe(data => {
-      data.features.forEach( feature => {
-        this.countyNames.push(feature.properties.county_nam);
-      });
-    });
+    // this.countyShpService.addCountyShp().subscribe(data => {
+    //   data.features.forEach( feature => {
+    //     this.countyNames.push(feature.properties.county_nam);
+    //   });
+    // });
 
-    console.log('madness', this.countyNames);
+    // console.log('madness', this.countyNames);
   }
 
-  showPopup(dataFromGeoJSON: any): any{
+  showPopup(dataFromGeoJSON: any, here: any): any{
 
     return '' +
       `<div>Disease Name: ${ dataFromGeoJSON.name }</div>` +
-      `<div>County Name: ${ this.countyNames }</div>`;
+      `<div>County Name: ${ here.type }</div>`;
   }
 }
